@@ -1,6 +1,7 @@
 import fs from 'fs'
 
 import express, { Express } from 'express';
+import cookies from "cookie-parser";
 
 import { CS571DefaultSecretConfig, CS571Initializer } from '@cs571/s24-api-framework'
 import { CS571StudentsRoute } from './routes/students';
@@ -10,6 +11,8 @@ import { CS571StudentsXSSRoute } from './routes/students-xss';
 console.log("Welcome to HW2!");
 
 const app: Express = express();
+
+app.use(cookies());
 
 const appBundle = CS571Initializer.init<HW2PublicConfig, CS571DefaultSecretConfig>(app, {
   allowNoAuth: [],
